@@ -13,18 +13,14 @@ const useForm = () => {
         address: ''
     });
 
-    // State to manage form validation errors
     const [errors, setErrors] = useState({});
     
-    // State to handle the Snackbar open/close
     const [snackbarOpen, setSnackbarOpen] = useState(false);
-    
-    // State to manage the Snackbar alert message
+
     const [alertMessage, setAlertMessage] = useState('');
 
     // Function to handle form input changes
     const handleChange = ({ target: { name, value } }) => {
-        // Update the form data state
         setFormData((prevState) => ({
             ...prevState,
             [name]: value
@@ -66,17 +62,17 @@ const useForm = () => {
                 break;
             case 'dob':
                 if (!validateDate(value)) {
-                    error = 'Invalid date format. Use DD/MM/YYYY.'; // Invalid date format
+                    error = 'Invalid date format. Use DD/MM/YYYY.';
                 }
                 break;
             case 'phoneNumber':
                 if (value.length !== 10 || isNaN(value)) {
-                    error = 'Phone number must be 10 digits long.'; // Phone number must be exactly 10 digits
+                    error = 'Phone number must be 10 digits long.';
                 }
                 break;
             case 'email':
                 if (!validateEmail(value)) {
-                    error = 'Invalid email format.'; // Invalid email format
+                    error = 'Invalid email format.';
                 }
                 break;
             default:
@@ -88,13 +84,13 @@ const useForm = () => {
 
     // Function to handle form submission
     const handleSubmit = (event) => {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault();
 
         const validationErrors = Object.values(errors).filter((error) => error !== '');
 
         if (validationErrors.length > 0) {
             setAlertMessage('Mandatory field(s) missing or invalid.');
-            setSnackbarOpen(true); // Open the Snackbar with an error message
+            setSnackbarOpen(true);
             return;
         }
 
@@ -103,13 +99,13 @@ const useForm = () => {
     };
 
     return {
-        formData, // The current form data
-        errors, // The current form validation errors
-        snackbarOpen, // Snackbar open state
-        setSnackbarOpen, // Function to set Snackbar open state
-        alertMessage, // Snackbar alert message
-        handleChange, // Function to handle form input changes
-        handleSubmit // Function to handle form submission
+        formData,
+        errors,
+        snackbarOpen,
+        setSnackbarOpen,
+        alertMessage,
+        handleChange,
+        handleSubmit
     };
 }
 

@@ -1,0 +1,1 @@
+export {default as backArrow} from "./back-arrow.svg";

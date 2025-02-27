@@ -1,4 +1,6 @@
-import React from 'react';
+
+import React from "react";
+
 import {
   TextField,
   Button,
@@ -10,15 +12,30 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CssBaseline
-} from '@mui/material';
-import { GlobalStyles } from '@mui/styled-engine';
+  CssBaseline,
+} from "@mui/material";
+import { GlobalStyles } from "@mui/styled-engine";
 import useForm from "../../hooks/useForm";
+import { backArrow } from "../../assets/icons/icons";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeForm = () => {
-
   // Destructure form-related states and handlers from useForm hook
-  const { formData, errors, snackbarOpen, setSnackbarOpen, alertMessage, handleChange, handleSubmit } = useForm();
+  const {
+    formData,
+    errors,
+    snackbarOpen,
+    setSnackbarOpen,
+    alertMessage,
+    handleChange,
+    handleSubmit,
+  } = useForm();
+
+  const navigate = useNavigate();
+
+  const navigateToBack = () => {
+    navigate("/");
+  }
 
   return (
     <div>
@@ -26,7 +43,13 @@ const EmployeeForm = () => {
       <CssBaseline />
 
       {/* GlobalStyles to apply a gradient background to the body */}
-      <GlobalStyles styles={{ body: { background: 'linear-gradient(135deg, #005EB8,rgb(82, 195, 230))' } }} />
+      <GlobalStyles
+        styles={{
+          body: {
+            background: "linear-gradient(135deg, #005EB8,rgb(82, 195, 230))",
+          },
+        }}
+      />
 
       {/* Center the form vertically and horizontally */}
       <Box
@@ -36,12 +59,15 @@ const EmployeeForm = () => {
         height="100vh"
       >
         <Container maxWidth="sm">
-          <Card>
+          <Card style={{ borderRadius: '25px' }}>
             {/* CardHeader with the form title */}
+            <div style={{ display: "flex", marginLeft: '25px'}}>
+              <img style={{cursor: 'pointer'}} src={backArrow} alt="back-arrow" onClick={navigateToBack}></img>
             <CardHeader
               title="EMPLOYEE FORM"
-              sx={{ textAlign: 'center', color: '#005EB8', fontWeight: 'bold' }}
+              sx={{ textAlign: "center", color: "#005EB8", fontWeight: "bold", flex: 1 , fontSize: "14px"}}
             />
+            </div>
 
             {/* CardContent for the form fields */}
             <CardContent sx={{ p: 3 }}>
@@ -128,8 +154,7 @@ const EmployeeForm = () => {
                       helperText={errors.email}
                     />
                   </Grid>
-
-                  {/* Add the remaining fields */}
+                  
                   {/* Hobbies Field */}
                   <Grid item xs={12}>
                     <TextField
@@ -158,7 +183,7 @@ const EmployeeForm = () => {
 
                   {/* Submit Button */}
                   <Grid item xs={12}>
-                    <Button 
+                    <Button
                       type="submit"
                       variant="contained"
                       color="primary"
@@ -176,7 +201,10 @@ const EmployeeForm = () => {
                 autoHideDuration={6000}
                 onClose={() => setSnackbarOpen(false)}
               >
-                <Alert onClose={() => setSnackbarOpen(false)} severity="success">
+                <Alert
+                  onClose={() => setSnackbarOpen(false)}
+                  severity="success"
+                >
                   {alertMessage}
                 </Alert>
               </Snackbar>
