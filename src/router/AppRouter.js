@@ -1,11 +1,6 @@
-// Import createBrowserRouter from react-router-dom using CommonJS syntax
-const { createBrowserRouter } = require("react-router-dom");
-
-// Import the main App component using CommonJS syntax
-const { default: App } = require("../../App");
-
-// Import the EmployeeForm component using CommonJS syntax
-const { default: EmployeeForm } = require("../employeeForm/EmployeeForm");
+import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
+import EmployeeForm from "../components/employeeForm/EmployeeForm";
 
 // Create the router configuration using createBrowserRouter
 const AppRouter = createBrowserRouter([
