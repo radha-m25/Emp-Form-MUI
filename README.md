@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Employee Form Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web-based application that provides an employee form to collect information. The form includes fields for first name, last name, middle name, date of birth, phone number, email, hobbies, and address. The project uses React for the frontend and Material-UI for styling components. React Router is used for navigation between the home page and the form page.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Getting Started](#getting-started)
+- [Form Validation](#form-validation)
+- [Styling](#styling)
+- [Navigation](#navigation)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run this project locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/employee-form-app.git
+    cd employee-form-app
+    ```
 
-### `npm test`
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Run the application**:
+    ```bash
+    npm start
+    ```
 
-### `npm run build`
+The application will be running at `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Form Validation
+The form validation logic is implemented in the useForm custom hook located at src/hooks/useForm.js. The following fields are validated:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+First name, Last name, and Address: Required fields that cannot be empty.
+Date of Birth (DOB): Must be in the format DD/MM/YYYY and represent a valid date.
+Phone Number: Must be exactly 10 digits long.
+Email: Must be in a valid email format.
+These validations ensure that users provide the correct information before submission.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Styling
+Global and component-specific styles are applied using CSS and Material-UI:
 
-### `npm run eject`
+1. Global Styles: Defined in App.css and applied to the body for a gradient background and full-height layout.
+Component Styles: Specific styles for the EmployeeForm component are defined in EmployeeForm.css.
+Inline styles and Material-UI Button component are used in App.js to style the home page elements and form button.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Navigation
+React Router is used to handle navigation:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Home Page (/): Renders the main App component, which includes a heading and a button to navigate to the employee form.
+2. Form Page (/form): Renders the EmployeeForm component, which includes the form to collect employee information.
